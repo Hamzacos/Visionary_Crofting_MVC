@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Course </title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Course Tracker</h1>
+    <hr>
+    <h2>Save Course</h2>
+
+    <form th:action="@{/save}" th:object="${command}" method="POST">
+        <input type="text" th:field="*{reference}"
+               placeholder="reference du commande" class="form-control mb-4 col-4">
+
+        <input type="Date" th:field="*{commandDate}"
+               placeholder="entre Votre Date de commande" class="form-control mb-4 col-4">
+
+        <input type="text"  th:field="*{commandTotalPrice}" name ="commandTotalPrice"
+               placeholder="Entrez le prix totale de votre Commande" class="form-control mb-4 col-4">
+
+        <!--<select id="inputState" class="form-control name" name="Name" >
+            <option selected>Choose Your Company</option>
+            <option></option>
+        </select>-->
+        <button type="submit" class="btn btn-info col-2"> Save Course</button>
+    </form>
+
+    <hr>
+
+    <a th:href = "@{/index}"> Back to Course List</a>
+</div>
+</body>
+</html>
