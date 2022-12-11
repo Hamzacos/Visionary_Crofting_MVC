@@ -11,9 +11,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 import java.util.List;
 
@@ -27,11 +31,15 @@ public class Command implements  java.io.Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @NotBlank(message = "reference must not be blank")
     private String reference;
-    private String commandDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date commandDate = new Date(System.currentTimeMillis() );
+    @NotNull
     private Double commandTotalPrice;
-   /* @ManyToOne
-    private Client client;*/
+
     @OneToMany(mappedBy = "command")
     private List<CommandItem> commandItem;
 

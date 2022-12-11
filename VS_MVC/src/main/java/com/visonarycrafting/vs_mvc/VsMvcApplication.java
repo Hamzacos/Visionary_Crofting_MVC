@@ -4,10 +4,13 @@ import com.visonarycrafting.vs_mvc.Dao.ClientRepository;
 import com.visonarycrafting.vs_mvc.Dao.CommandRepository;
 import com.visonarycrafting.vs_mvc.Entities.Client;
 import com.visonarycrafting.vs_mvc.Entities.Command;
+import jakarta.validation.Validator;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+
 
 @SpringBootApplication
 public class VsMvcApplication {
@@ -27,6 +30,11 @@ public class VsMvcApplication {
                 System.out.println(c.getEmail());
             });
         };
+    }
+
+    @Bean
+    public Validator localValidatorFactoryBean() {
+        return  new LocalValidatorFactoryBean();
     }
 
 }

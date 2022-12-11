@@ -30,13 +30,27 @@
                     <td th:text = "${c.getCommandTotalPrice}"></td>
                     <td th:text = "${c.getClient.getEmail}"></td>
                     <td>
+                        <a th:href="@{/update/{id}(id=${c.id})}" class="btn btn-primary">Update</a>
                         <a th:href="@{/delete/{id}(id=${c.id})}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
                 </tbody>
             </table>
+          <!--  <ul class="nav nav-pills">
+                <li th:each="page,status:${pages}">
+                    <a  th:class="${status.index==currentPage?'btn btn-primary ms-1':'btn btn-outline-primary ms-1'}"
+                        th:text="${status.index}"
+                        th:href="@{/Page(page=${status.index},keyword=${keyword})}"
+                    ></a>
+                </li>
+
+            </ul>-->
+            <ul th:each="page : ${pages}">
+                <li th:text="${page}"></li>
+            </ul>
         </div>
     </div>
+
 </div>
 </body>
 </html>

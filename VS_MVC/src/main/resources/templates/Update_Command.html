@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Update Command </title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Update Command</h2>
+
+    <form th:action="@{/save}" th:object="${command}" method="POST">
+        <input type="hidden" th:field="*{id}" />
+        <input type="text" th:field="*{reference}" placeholder="Email" class="form-control mb-4 col-4">
+
+        <input type="Date" th:field="*{commandDate}" placeholder="Email" class="form-control mb-4 col-4">
+
+        <input type="text"  th:field="*{commandTotalPrice}" placeholder="Email" class="form-control mb-4 col-4">
+        <button type="submit" class="btn btn-info col-2"> Update  Command</button>
+    </form>
+
+    <hr>
+
+    <a th:href = "@{/index}"> Back to Command List</a>
+</div>
+</body>
+</html>
